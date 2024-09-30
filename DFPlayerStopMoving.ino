@@ -1,23 +1,23 @@
-#include "Arduino.h"
-#include "DFRobotDFPlayerMini.h"
-#include <SoftwareSerial.h>
+#include "Arduino.h"                                             //libarary
+#include "DFRobotDFPlayerMini.h"                                 //libarary
+#include <SoftwareSerial.h>                                       //libarary
 
-#define sensor 12
+#define sensor 12           // connecting sensor to pin 12 of arduino 
 
-int sensor_value = 0;
+int sensor_value = 0;       //creating variable to store value of sensor
 
-SoftwareSerial mySerial(2,3);
-DFRobotDFPlayerMini myPlayer;
+SoftwareSerial mySerial(2,3);        //Creating my own TX and RX pin in this case RX is 2 and TX is 3
+DFRobotDFPlayerMini myPlayer;        //Creating the player 
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
-  mySerial.begin(9600);
-  myPlayer.begin(mySerial);
+  Serial.begin(9600);           //Begin the serial communication for Serial monitor
+  mySerial.begin(9600);          //Begin the Serial communication for DFPlaye mini
+  myPlayer.begin(mySerial);          // Connecting audio player to mySerial
 
-  pinMode(sensor,INPUT);
+  pinMode(sensor,INPUT);             //Defining the pinMode of pin which sensor is connected
 
-  myPlayer.volume(30);
+  myPlayer.volume(30);               // setting the volume for 
   myPlayer.play(3);
 }
 
